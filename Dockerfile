@@ -38,7 +38,8 @@ RUN cd /root && \
 
 # Install Rust
 # nightly-2021-11-01 toolchain manifest is https://static.rust-lang.org/dist/2021-11-01/channel-rust-nightly.toml
-# Copy a prepared tarball to the container is ok
+# Copy a tarball to the container is ok
+# Path: ~/.rustup ~/.cargo
 RUN cd /root && \
     wget https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-gnu/rustup-init && \
     echo "3dc5ef50861ee18657f9db2eeb7392f9c2a6c95c90ab41e45ab4ca71476b4338  ./rustup-init" > checksum && \
@@ -46,5 +47,6 @@ RUN cd /root && \
     chmod +x ./rustup-init && \
     echo '1' | /root/rustup-init --default-toolchain nightly-2021-11-01 && \
     echo 'source /root/.cargo/env' >> /root/.bashrc && \
-    /root/.cargo/bin/rustup component add rust-src rls rust-analysis clippy rustfmt
+    /root/.cargo/bin/rustup component add rust-src rls rust-analysis clippy rustfmt && \
+    echo 'source /root/.cargo/env' >> /root/.bashrc
 
