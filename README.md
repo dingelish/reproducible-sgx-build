@@ -16,3 +16,14 @@ use cc_wrapper.sh and rustc_wrapper.sh to replace CC and RUSTC
 export CC=cc_wrapper.sh
 export RUSTC=rustc_wrapper.sh
 ```
+
+## configure rustcflags
+
+since the target triple is x86_64-linux-unknown-linux-gnu, it inherits default llvm flags. but we need a few more. put these in .cargo/config
+
+lvi flags help with side channel attack mitigation, but it slows down the enclave.
+
+```toml
+[build]
+rustflags = ["-C", "target-feature=+rdrnd,+rdseed,+lvi-cfi,+lvi-load-hardening"]
+```
