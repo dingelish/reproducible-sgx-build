@@ -1,0 +1,29 @@
+[package]
+name = "libflate"
+version = "0.1.27"
+authors = ["Takeru Ohta <phjgt308@gmail.com>"]
+description = "A Rust implementation of DEFLATE algorithm and related formats (ZLIB, GZIP)"
+homepage = "https://github.com/sile/libflate"
+repository = "https://github.com/sile/libflate"
+readme = "README.md"
+keywords = ["deflate", "gzip", "zlib"]
+categories = ["compression"]
+license = "MIT"
+
+[badges]
+travis-ci = {repository = "sile/libflate"}
+codecov = {repository = "sile/libflate"}
+
+[dependencies]
+adler32 = { git = "https://github.com/mesalock-linux/adler32-rs-sgx" }
+crc32fast = { git = "https://github.com/mesalock-linux/rust-crc32fast-sgx" }
+rle-decode-fast = { git = "https://github.com/mesalock-linux/rle-decode-helper-sgx" }
+take_mut = { git = "https://github.com/mesalock-linux/take_mut-sgx" }
+sgx_tstd = { rev = "v1.1.3", git = "https://github.com/apache/teaclave-sgx-sdk.git", optional = true }
+
+[dev-dependencies]
+#clap = "2"
+
+[features]
+default = ["mesalock_sgx"]
+mesalock_sgx = ["sgx_tstd"]
