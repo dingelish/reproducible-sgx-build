@@ -1,0 +1,32 @@
+[build]
+rustflags = ["-C", "target-feature=+rdrnd,+rdseed,+lvi-cfi,+lvi-load-hardening"]
+
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source."https://github.com/mesalock-linux/adler32-rs-sgx"]
+git = "https://github.com/mesalock-linux/adler32-rs-sgx"
+replace-with = "vendored-sources"
+
+[source."https://github.com/mesalock-linux/inflate-sgx"]
+git = "https://github.com/mesalock-linux/inflate-sgx"
+replace-with = "vendored-sources"
+
+[source."https://github.com/mesalock-linux/libflate-sgx"]
+git = "https://github.com/mesalock-linux/libflate-sgx"
+replace-with = "vendored-sources"
+
+[source."https://github.com/mesalock-linux/rle-decode-helper-sgx"]
+git = "https://github.com/mesalock-linux/rle-decode-helper-sgx"
+replace-with = "vendored-sources"
+
+[source."https://github.com/mesalock-linux/rust-crc32fast-sgx"]
+git = "https://github.com/mesalock-linux/rust-crc32fast-sgx"
+replace-with = "vendored-sources"
+
+[source."https://github.com/mesalock-linux/take_mut-sgx"]
+git = "https://github.com/mesalock-linux/take_mut-sgx"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"

@@ -10,11 +10,16 @@ in the enclave directory, run `cargo vendor` and add corresponding lines to encl
 
 ## patch debug symbols
 
-use cc_wrapper.sh and rustc_wrapper.sh to replace CC and RUSTC
+use cc_wrapper.sh and rustc_wrapper.sh to replace CC and RUSTC. these scripts help normalize some path which is hard coded in debug symbol. PROJECT_ROOT, BUILD_ROOT, RUST_SGX_SDK_ROOT will be replaced by PROJECT_SYMLINKS. see these shell scripts for details.
 
 ```
-export CC=cc_wrapper.sh
-export RUSTC=rustc_wrapper.sh
+export PROJECT_ROOT=$(pwd)/enclave
+export BUILD_ROOT=$(pwd)/enclave
+export RUST_SGX_SDK_ROOT=$(pwd)/teaclave-sgx-sdk
+export PROJECT_SYMLINKS=/tmp
+
+export CC=$(pwd)/cc_wrapper.sh
+export RUSTC=$(pwd)/rustc_wrapper.sh
 ```
 
 ## configure rustcflags
